@@ -86,7 +86,7 @@ h3{font-size:22px}
 .mobile-menu__close{
   position:absolute; right:0; top:0; background:transparent; color:#fff; border:0; font-size:28px; cursor:pointer
 }
-.mobile-menu__nav{display:flex; flex-direction:column; gap:16px; height:100%; align-items:center; justify-content:center; text-align:center; background: #fff;}
+.mobile-menu__nav{display:flex; flex-direction:column; gap:16px; height:100%; align-items:center; justify-content:center; text-align:center}
 .mobile-menu__nav a{color:#fff; text-decoration:none; font-size:22px}
 .mobile-menu__contacts{display:flex; gap:16px; justify-content:center; color:#cbd3ff}
 
