@@ -1,7 +1,8 @@
 :root{
-  --bg:#0b1020;
-  --bg-alt:#0e1428;
-  --card:#121935cc;
+  --header-h:64px;
+  --bg:#121735;
+  --bg-alt:#141c3c;
+  --card:#1a2350cc;
   --text:#edf1ff;
   --muted:#9aa4c7;
   --accent:#7aa2ff;
@@ -66,8 +67,7 @@ h3{font-size:22px}
 
 /* Mobile Menu (Fullscreen) */
 .mobile-menu{
-  position:fixed; inset:0; background:rgba(6,10,24,.65);
-  backdrop-filter:blur(10px) saturate(1.2);
+  position:fixed; inset:0; background:#0b1020;
   transform:translateY(-100%); opacity:0; pointer-events:none;
   transition:.25s ease;
 }
@@ -157,3 +157,13 @@ h3{font-size:22px}
   .footer__inner{flex-direction:column}
   .footer__cols{grid-template-columns:1fr 1fr}
 }
+
+/* Fixed header with light-on-scroll mode */
+body{padding-top:var(--header-h)}
+.site-header{position:fixed; top:0; left:0; right:0; width:100%}
+.site-header.is-light{background:rgba(255,255,255,.92); border-bottom:1px solid #e5e8f2}
+.site-header.is-light .logo{color:#0b1320}
+.site-header.is-light .logo__mark{background:#0b1320; color:#ffffff}
+.site-header.is-light .nav-desktop a{color:#0b1320; opacity:.9}
+.site-header.is-light .hamburger span{background:#0b1320}
+.site-header.is-light .btn--small.btn--primary{box-shadow:none}

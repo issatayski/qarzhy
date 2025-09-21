@@ -67,6 +67,21 @@ function setupCalc() {
   });
 }
 
+
+function setupHeaderScroll(){
+  const header = document.querySelector('.site-header');
+  if(!header) return;
+  const mqDesktop = window.matchMedia('(min-width: 981px)');
+  const apply = () => {
+    if (!mqDesktop.matches) { header.classList.remove('is-light'); return; }
+    if (window.scrollY > 8) header.classList.add('is-light');
+    else header.classList.remove('is-light');
+  };
+  apply();
+  window.addEventListener('scroll', apply, {passive:true});
+  mqDesktop.addEventListener ? mqDesktop.addEventListener('change', apply) : mqDesktop.addListener(apply);
+}
+
 function setupLeadForm() {
   const form = document.getElementById("leadForm");
   if (!form) return;
@@ -85,6 +100,7 @@ function setupLeadForm() {
 (async function init(){
   await includePartials();
   setupHeaderInteractions();
+  setupHeaderScroll();
   setupYear();
   setupCalc();
   setupLeadForm();
