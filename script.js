@@ -21,19 +21,30 @@ function setupHeaderInteractions() {
   // Because header is dynamically injected, elements may not be present on first run.
   if (!mobileMenu) return;
 
+  
   const openMenu = () => {
     mobileMenu.classList.add("open");
     mobileMenu.setAttribute("aria-hidden", "false");
+    // Force solid background via inline styles to avoid any cascade issues
+    mobileMenu.style.background = "#0d1329";
+    mobileMenu.style.backdropFilter = "none";
+    mobileMenu.style.zIndex = "10000";
     menuOpen && menuOpen.setAttribute("aria-expanded", "true");
     document.body.style.overflow = "hidden";
   };
 
+
+  
   const closeMenu = () => {
     mobileMenu.classList.remove("open");
     mobileMenu.setAttribute("aria-hidden", "true");
+    mobileMenu.style.background = "";
+    mobileMenu.style.backdropFilter = "";
+    mobileMenu.style.zIndex = "";
     menuOpen && menuOpen.setAttribute("aria-expanded", "false");
     document.body.style.overflow = "";
   };
+
 
   // Open/Close buttons
   menuOpen && menuOpen.addEventListener("click", openMenu);
