@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   }
 
-  // Wait a microtask so injected header/footer exist before querying elements
+  // Give browser a moment to paint, then wire up
   await Promise.resolve();
 
   // Mobile navigation logic
@@ -35,10 +35,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.body.style.overflow = 'hidden';
   };
 
-  // Initialize hidden state for accessibility
-  if (navMenu && !navMenu.hasAttribute('aria-hidden')) {
-    navMenu.setAttribute('aria-hidden', 'true');
-  }
+  // Ensure hidden by default (prevents mobile auto-open)
+  if (navMenu) navMenu.setAttribute('aria-hidden', navMenu.getAttribute('aria-hidden') || 'true');
+  if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
 
   // Click handlers
   if (navToggle) {
@@ -72,7 +71,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const d = Math.max(0, +docs.value || 0);
     const needHR = hr.value === 'yes';
 
-    // базовая логика тарифа
     let base = 39000;
     base += Math.ceil(d/15) * 10000;
     base += Math.ceil(e/5) * 8000;
@@ -83,7 +81,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   if (calcBtn) calcBtn.addEventListener('click', calc);
 
-  // Fake submit handler (demo)
+  // Demo submit
   const leadForm = document.getElementById('leadForm');
   if (leadForm) {
     leadForm.addEventListener('submit', (e) => {
