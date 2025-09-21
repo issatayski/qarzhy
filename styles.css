@@ -67,9 +67,18 @@ h3{font-size:22px}
 
 /* Mobile Menu (Fullscreen) */
 .mobile-menu{
-  position:fixed; inset:0; background:#0b1020;
+  position:fixed; inset:0;
+  background:#0b1020 !important;
+  z-index:9999;
   transform:translateY(-100%); opacity:0; pointer-events:none;
-  transition:.25s ease;
+  transition:transform .25s ease, opacity .25s ease, background .25s ease;
+}
+.mobile-menu.open{transform:translateY(0); opacity:1; pointer-events:auto}
+.mobile-menu::before{
+  content:"";
+  position:absolute; inset:0;
+  background:#0b1020;
+  opacity:1;
 }
 .mobile-menu.open{transform:translateY(0); opacity:1; pointer-events:auto}
 .mobile-menu__inner{position:relative; width:min(720px, 90%); margin:0 auto; height:100%;

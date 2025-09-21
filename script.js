@@ -39,6 +39,9 @@ function setupHeaderInteractions() {
   menuOpen && menuOpen.addEventListener("click", openMenu);
   menuClose && menuClose.addEventListener("click", closeMenu);
 
+  // Close when clicking outside inner content
+  mobileMenu.addEventListener('click', (e)=>{ if(e.target === mobileMenu) closeMenu(); });
+
   // Close on link click (for anchor navigation)
   mobileMenu.querySelectorAll(".mm-link").forEach(a => a.addEventListener("click", closeMenu));
 
