@@ -1,61 +1,62 @@
 // Inject header.html and footer.html into placeholders
 document.addEventListener('DOMContentLoaded', async () => {
-  // Include partials
+  // Include partials (works on same-origin like GitHub Pages; if opening from file://, include fails)
   for (const ph of document.querySelectorAll('[data-include]')) {
     const file = ph.getAttribute('data-include');
     try {
       const res = await fetch(file, {cache: 'no-cache'});
       ph.innerHTML = await res.text();
     } catch (e) {
-      ph.innerHTML = '<div style="padding:12px;color:#f87171;background:#2b0d0d;border:1px solid #7f1d1d;border-radius:8px">Не удалось загрузить '+file+'</div>';
+      ph.innerHTML = '<div style="padding:12px;color:#b91c1c;background:#fee2e2;border:1px solid #fecaca;border-radius:8px">Не удалось загрузить '+file+' (если вы открыли страницу как file://, используйте локальный сервер или GitHub Pages).</div>';
     }
   }
 
-  // Give browser a moment to paint, then wire up
+  // Wait a tick so the injected DOM is present
   await Promise.resolve();
 
-  // Mobile navigation logic
+  // Mobile navigation logic (class-based, robust)
   const navToggle = document.getElementById('navToggle');
   const navMenu = document.getElementById('navMenu');
   const navOverlay = document.getElementById('navOverlay');
 
   const closeMenu = () => {
-    if (!navMenu) return;
-    navMenu.setAttribute('aria-hidden', 'true');
+    if (navMenu) {
+      navMenu.classList.remove('is-open');
+      navMenu.setAttribute('aria-hidden', 'true');
+    }
     if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
-    if (navOverlay) navOverlay.hidden = true;
+    if (navOverlay) navOverlay.classList.remove('is-open');
     document.body.style.overflow = '';
   };
 
   const openMenu = () => {
-    if (!navMenu) return;
-    navMenu.setAttribute('aria-hidden', 'false');
+    if (navMenu) {
+      navMenu.classList.add('is-open');
+      navMenu.setAttribute('aria-hidden', 'false');
+    }
     if (navToggle) navToggle.setAttribute('aria-expanded', 'true');
-    if (navOverlay) navOverlay.hidden = false;
+    if (navOverlay) navOverlay.classList.add('is-open');
     document.body.style.overflow = 'hidden';
   };
 
-  // Ensure hidden by default (prevents mobile auto-open)
-  if (navMenu) navMenu.setAttribute('aria-hidden', navMenu.getAttribute('aria-hidden') || 'true');
-  if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+  // Default CLOSED
+  closeMenu();
 
-  // Click handlers
+  // Button handler
   if (navToggle) {
     navToggle.addEventListener('click', () => {
-      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-      expanded ? closeMenu() : openMenu();
+      const open = navMenu && navMenu.classList.contains('is-open');
+      open ? closeMenu() : openMenu();
     });
   }
 
-  if (navOverlay) {
-    navOverlay.addEventListener('click', closeMenu);
-  }
+  // Overlay click
+  if (navOverlay) navOverlay.addEventListener('click', closeMenu);
 
-  // Close on link click (mobile)
+  // Close on link click
   if (navMenu) {
     navMenu.addEventListener('click', (e) => {
-      const t = e.target;
-      if (t.tagName === 'A') closeMenu();
+      if (e.target.tagName === 'A') closeMenu();
     });
   }
 
