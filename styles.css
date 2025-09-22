@@ -66,14 +66,6 @@ h3{font-size:22px}
 .hamburger span{display:block; width:26px; height:2px; background:#cfd7ff; border-radius:2px}
 
 /* Mobile Menu (Fullscreen) */
-
-.menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:998;display:none}
-.menu-overlay.is-visible{display:block}
-.mobile-menu{z-index:999}
-body.is-menu-open{overflow:hidden}
-
-
-
 .mobile-menu{
   position:fixed; inset:0;
   background:#0b1020 !important;
@@ -190,3 +182,14 @@ body{padding-top:var(--header-h)}
 .mobile-menu{background:#0d1329 !important; backdrop-filter:none !important; z-index:9999}
 .mobile-menu__inner{max-width:720px}
 .mobile-menu__nav a{color:#fff}
+
+
+/* --- Mobile menu overlay (dim background behind menu) --- */
+.menu-overlay{
+  position:fixed; inset:0;
+  background:rgba(0,0,0,.55);
+  z-index:9000;
+  display:none;
+}
+.menu-overlay.is-visible{ display:block; }
+body.is-locked{ overflow:hidden; }

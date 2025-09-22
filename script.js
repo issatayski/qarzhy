@@ -17,6 +17,7 @@ function setupHeaderInteractions() {
   const menuOpen = document.getElementById("menuOpen");
   const menuClose = document.getElementById("menuClose");
   const mobileMenu = document.getElementById("mobileMenu");
+  const overlay = document.getElementById("menuOverlay");
 
   // Because header is dynamically injected, elements may not be present on first run.
   if (!mobileMenu) return;
@@ -31,6 +32,8 @@ function setupHeaderInteractions() {
     mobileMenu.style.zIndex = "10000";
     menuOpen && menuOpen.setAttribute("aria-expanded", "true");
     document.body.style.overflow = "hidden";
+    document.body.classList.add('is-locked');
+    if (overlay){ overlay.hidden = false; overlay.classList.add('is-visible'); }
   };
 
 
@@ -43,6 +46,8 @@ function setupHeaderInteractions() {
     mobileMenu.style.zIndex = "";
     menuOpen && menuOpen.setAttribute("aria-expanded", "false");
     document.body.style.overflow = "";
+    document.body.classList.remove('is-locked');
+    if (overlay){ overlay.classList.remove('is-visible'); setTimeout(()=>overlay.hidden = true, 120); }
   };
 
 
