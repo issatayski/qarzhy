@@ -1,94 +1,112 @@
-// Inject header.html and footer.html into placeholders
-document.addEventListener('DOMContentLoaded', async () => {
-  // Include partials
-  for (const ph of document.querySelectorAll('[data-include]')) {
-    const file = ph.getAttribute('data-include');
+// Inject header and footer, setup interactions
+async function includePartials() {
+  const includeNodes = document.querySelectorAll("[data-include]");
+  for (const node of includeNodes) {
+    const url = node.getAttribute("data-include");
     try {
-      const res = await fetch(file, {cache: 'no-cache'});
-      ph.innerHTML = await res.text();
+      const res = await fetch(url);
+      const html = await res.text();
+      node.innerHTML = html;
     } catch (e) {
-      ph.innerHTML = '<div style="padding:12px;color:#f87171;background:#2b0d0d;border:1px solid #7f1d1d;border-radius:8px">Не удалось загрузить '+file+'</div>';
+      node.innerHTML = "<div style='padding:12px;color:#fbb;'>Не удалось загрузить " + url + "</div>";
     }
   }
+}
 
-  // Give browser a moment to paint, then wire up
-  await Promise.resolve();
+function setupHeaderInteractions() {
+  const menuOpen = document.getElementById("menuOpen");
+  const menuClose = document.getElementById("menuClose");
+  const mobileMenu = document.getElementById("mobileMenu");
 
-  // Mobile navigation logic
-  const navToggle = document.getElementById('navToggle');
-  const navMenu = document.getElementById('navMenu');
-  const navOverlay = document.getElementById('navOverlay');
-
-  const closeMenu = () => {
-    if (!navMenu) return;
-    navMenu.setAttribute('aria-hidden', 'true');
-    if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
-    if (navOverlay) navOverlay.hidden = true;
-    document.body.style.overflow = '';
-  };
+  // Because header is dynamically injected, elements may not be present on first run.
+  if (!mobileMenu) return;
 
   const openMenu = () => {
-    if (!navMenu) return;
-    navMenu.setAttribute('aria-hidden', 'false');
-    if (navToggle) navToggle.setAttribute('aria-expanded', 'true');
-    if (navOverlay) navOverlay.hidden = false;
-    document.body.style.overflow = 'hidden';
+    mobileMenu.classList.add("open");
+    mobileMenu.setAttribute("aria-hidden", "false");
+    menuOpen && menuOpen.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
   };
 
-  // Ensure hidden by default (prevents mobile auto-open)
-  if (navMenu) navMenu.setAttribute('aria-hidden', navMenu.getAttribute('aria-hidden') || 'true');
-  if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
-
-  // Click handlers
-  if (navToggle) {
-    navToggle.addEventListener('click', () => {
-      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-      expanded ? closeMenu() : openMenu();
-    });
-  }
-
-  if (navOverlay) {
-    navOverlay.addEventListener('click', closeMenu);
-  }
-
-  // Close on link click (mobile)
-  if (navMenu) {
-    navMenu.addEventListener('click', (e) => {
-      const t = e.target;
-      if (t.tagName === 'A') closeMenu();
-    });
-  }
-
-  // Simple calculator
-  const emp = document.getElementById('emp');
-  const docs = document.getElementById('docs');
-  const hr = document.getElementById('hr');
-  const calcBtn = document.getElementById('calcBtn');
-  const out = document.getElementById('calcResult');
-
-  const calc = () => {
-    const e = Math.max(0, +emp.value || 0);
-    const d = Math.max(0, +docs.value || 0);
-    const needHR = hr.value === 'yes';
-
-    let base = 39000;
-    base += Math.ceil(d/15) * 10000;
-    base += Math.ceil(e/5) * 8000;
-    if (needHR) base += 15000;
-
-    out.textContent = `Рекомендованный тариф: ~ ${base.toLocaleString('ru-RU')} ₸/мес`;
+  const closeMenu = () => {
+    mobileMenu.classList.remove("open");
+    mobileMenu.setAttribute("aria-hidden", "true");
+    menuOpen && menuOpen.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
   };
 
-  if (calcBtn) calcBtn.addEventListener('click', calc);
+  // Open/Close buttons
+  menuOpen && menuOpen.addEventListener("click", openMenu);
+  menuClose && menuClose.addEventListener("click", closeMenu);
 
-  // Demo submit
-  const leadForm = document.getElementById('leadForm');
-  if (leadForm) {
-    leadForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const data = Object.fromEntries(new FormData(leadForm).entries());
-      alert('Заявка отправлена!\nМы свяжемся с вами в ближайшее время.\n\n' + JSON.stringify(data, null, 2));
-      leadForm.reset();
-    });
-  }
-});
+  // Close on link click (for anchor navigation)
+  mobileMenu.querySelectorAll(".mm-link").forEach(a => a.addEventListener("click", closeMenu));
+
+  // Close on ESC
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && mobileMenu.classList.contains("open")) closeMenu();
+  });
+}
+
+function setupYear() {
+  const yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+}
+
+function setupCalc() {
+  const btn = document.getElementById("calcBtn");
+  if (!btn) return;
+  btn.addEventListener("click", () => {
+    const emp = Number(document.getElementById("emp").value || 0);
+    const rev = Number(document.getElementById("rev").value || 0);
+    // Simple heuristic pricing just for demo:
+    let base = 45000;
+    base += emp * 2000 + Math.min(150000, Math.floor(rev / 1_000_000) * 10000);
+    const result = `Рекомендованный тариф: ~ ${base.toLocaleString("ru-RU")} ₸/мес`;
+    document.getElementById("calcResult").textContent = result;
+  });
+}
+
+
+function setupHeaderScroll(){
+  const header = document.querySelector('.site-header');
+  if(!header) return;
+  const mqDesktop = window.matchMedia('(min-width: 981px)');
+  const apply = () => {
+    if (!mqDesktop.matches) { header.classList.remove('is-light'); return; }
+    if (window.scrollY > 8) header.classList.add('is-light');
+    else header.classList.remove('is-light');
+  };
+  apply();
+  window.addEventListener('scroll', apply, {passive:true});
+  mqDesktop.addEventListener ? mqDesktop.addEventListener('change', apply) : mqDesktop.addListener(apply);
+}
+
+function setupLeadForm() {
+  const form = document.getElementById("leadForm");
+  if (!form) return;
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    // For static hosting: emulate success and print to console
+    console.log("Lead form data:", data);
+    form.reset();
+    alert("Спасибо! Мы свяжемся с вами в ближайшее время.");
+  });
+}
+
+// Because header/footer are fetched asynchronously, we need to wire interactions after injection.
+(async function init(){
+  await includePartials();
+  setupHeaderInteractions();
+  setupHeaderScroll();
+  setupYear();
+  setupCalc();
+  setupLeadForm();
+
+  // If header reloaded later for some reason:
+  const headerObserver = new MutationObserver(() => setupHeaderInteractions());
+  const headerEl = document.getElementById("site-header");
+  if (headerEl) headerObserver.observe(headerEl, {childList:true, subtree:true});
+})();

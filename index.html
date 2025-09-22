@@ -3,261 +3,232 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Бухгалтерские услуги — Ваш надежный аутсорс</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <title>Бухгалтерские услуги — Надежное сопровождение бизнеса</title>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
-  <script defer src="script.js"></script>
 </head>
 <body>
-  <!-- Header will be injected from header.html -->
-  <div id="header-placeholder" data-include="header.html"></div>
+  <!-- Header include -->
+  <div id="site-header" data-include="header.html"></div>
 
-  <main id="home">
-    <!-- Hero -->
-    <section class="section hero" id="hero" aria-label="Главный экран">
-      <div class="container hero__grid">
-        <div class="hero__text">
-          <h1><span class="accent">Бухгалтерия</span> без ошибок и штрафов</h1>
-          <p>Комплексное сопровождение бизнеса: от регистрации до сдачи отчетности. Работайте спокойно — цифры под контролем.</p>
-          <div class="cta-row">
+  <main>
+    <!-- 2. Hero -->
+    <section id="hero" class="section hero">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <h1>Бухгалтерия без ошибок и штрафов</h1>
+          <p class="lead">Комплексное сопровождение ИП, ТОО и АО: учет, отчетность, зарплата, консультации. Работаем прозрачно и бережём ваш бюджет.</p>
+          <div class="hero__cta">
             <a href="#cta" class="btn btn--primary">Бесплатная консультация</a>
-            <a href="#services" class="btn btn--ghost">Список услуг</a>
+            <a href="#services" class="btn btn--ghost">Смотреть услуги</a>
           </div>
           <ul class="trust-badges">
             <li>10+ лет опыта</li>
-            <li>EN/Қаз/Рус</li>
-            <li>Онлайн-договор</li>
+            <li>EN 1279 · KZ стандарты</li>
+            <li>Онлайн‑договор за 1 день</li>
           </ul>
         </div>
-        <div class="hero__card" role="img" aria-label="Иллюстрация финансовой аналитики">
-          <div class="card">
-            <div class="card__header">
-              <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-              <span>Дашборд: финансы</span>
-            </div>
-            <div class="card__body">
-              <div class="kpi">
-                <div class="kpi__label">Доход</div>
-                <div class="kpi__value">12,4 млн ₸</div>
-              </div>
-              <div class="kpi">
-                <div class="kpi__label">Расход</div>
-                <div class="kpi__value">7,9 млн ₸</div>
-              </div>
-              <div class="kpi kpi--ok">
-                <div class="kpi__label">Налоги</div>
-                <div class="kpi__value">ОК ✓</div>
-              </div>
-              <div class="sparkline" aria-hidden="true"></div>
+        <div class="hero__art">
+          <div class="hero-card">
+            <div class="sparkle"></div>
+            <h3>Ваш личный бухгалтер</h3>
+            <p>Ежемесячные отчеты, контроль сроков, напоминания о налогах.</p>
+            <div class="stat-row">
+              <div><span class="stat">250+</span><span class="stat-label">компаний</span></div>
+              <div><span class="stat">98%</span><span class="stat-label">удовлетворённость</span></div>
+              <div><span class="stat">0</span><span class="stat-label">штрафов у клиентов</span></div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- About -->
-    <section class="section" id="about">
+    <!-- 3. About -->
+    <section id="about" class="section">
       <div class="container grid-2">
         <div>
           <h2>О компании</h2>
-          <p>Мы помогаем предпринимателям и компаниям вести бухгалтерию прозрачно и предсказуемо. Работаем с ИП, ТОО и АО, знаем специфику налогового законодательства РК и используем современные инструменты автоматизации.</p>
+          <p>Мы — команда сертифицированных бухгалтеров и налоговых консультантов. Настраиваем учет под ваш бизнес, автоматизируем рутину, помогаем экономить на налогах законно.</p>
           <ul class="list-check">
-            <li>Более 300 обслуживаемых компаний</li>
-            <li>Персональный бухгалтер и чат-поддержка</li>
-            <li>Работаем с 1С, Excel, облачными сервисами</li>
+            <li>Опыт в торговле, услугах, производстве, e‑commerce</li>
+            <li>Работаем с 1С, ERP и облачными сервисами</li>
+            <li>Договор и отчётность — полностью онлайн</li>
           </ul>
         </div>
-        <div class="tiles">
-          <div class="tile"><span class="tile__num">10+</span><span class="tile__label">лет опыта</span></div>
-          <div class="tile"><span class="tile__num">300+</span><span class="tile__label">клиентов</span></div>
-          <div class="tile"><span class="tile__num">24/7</span><span class="tile__label">поддержка</span></div>
-          <div class="tile"><span class="tile__num">0</span><span class="tile__label">штрафов у клиентов</span></div>
+        <div class="card glass">
+          <h3>Цифры и факты</h3>
+          <div class="fact-row">
+            <div class="fact"><span>10+</span><small>лет на рынке</small></div>
+            <div class="fact"><span>250+</span><small>активных клиентов</small></div>
+            <div class="fact"><span>24/7</span><small>поддержка</small></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Services -->
-    <section class="section alt" id="services">
+    <!-- 4. Services -->
+    <section id="services" class="section alt">
       <div class="container">
         <h2>Услуги</h2>
-        <div class="cards">
-          <article class="service">
+        <div class="cards-3">
+          <article class="card service">
             <h3>Полное сопровождение</h3>
-            <p>Ведение бухгалтерии «под ключ»: первичка, учет, закрытие месяца, отчеты.</p>
+            <p>Комплексное ведение бухгалтерии и налогов под ключ.</p>
+            <a href="#cta" class="link">Хочу консультацию →</a>
           </article>
-          <article class="service">
+          <article class="card service">
             <h3>Отчетность и налоги</h3>
-            <p>Подготовка и сдача отчетности, расчет налогов, соблюдение сроков.</p>
+            <p>Подготовка, проверка и сдача отчетности в срок.</p>
+            <a href="#cta" class="link">Сдать отчёт →</a>
           </article>
-          <article class="service">
+          <article class="card service">
             <h3>Зарплата и кадры</h3>
-            <p>Расчет ЗП, табели, отпуска, больничные, кадровые документы.</p>
-          </article>
-          <article class="service">
-            <h3>Консультации и аудит</h3>
-            <p>Экспресс-аудит учета и рекомендации по оптимизации.</p>
+            <p>Расчет зарплаты, отпусков, больничных, кадровый учет.</p>
+            <a href="#cta" class="link">Уточнить детали →</a>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Benefits -->
-    <section class="section" id="benefits">
+    <!-- 5. Benefits -->
+    <section id="benefits" class="section">
       <div class="container">
-        <h2>Почему мы</h2>
-        <div class="benefits">
-          <div class="benefit">
-            <div class="benefit__icon" aria-hidden="true">✓</div>
-            <h3>Прозрачные тарифы</h3>
-            <p>Фиксированная стоимость без скрытых платежей.</p>
-          </div>
-          <div class="benefit">
-            <div class="benefit__icon" aria-hidden="true">⚡</div>
-            <h3>Быстрый старт</h3>
-            <p>Подписание договора онлайн и запуск работ за 24 часа.</p>
-          </div>
-          <div class="benefit">
-            <div class="benefit__icon" aria-hidden="true">🛡️</div>
-            <h3>Надежность</h3>
-            <p>Дорожная карта закрытия месяца и контроль качества.</p>
-          </div>
-          <div class="benefit">
-            <div class="benefit__icon" aria-hidden="true">📊</div>
-            <h3>Отчеты понятным языком</h3>
-            <p>Ежемесячные дашборды и краткие выводы для владельца.</p>
-          </div>
+        <h2>Почему выбирают нас</h2>
+        <div class="cards-4">
+          <div class="card pill"><strong>Безопасность</strong><span>Двойная проверка и чек‑листы</span></div>
+          <div class="card pill"><strong>Прозрачность</strong><span>Фикс‑цена, без скрытых платежей</span></div>
+          <div class="card pill"><strong>Скорость</strong><span>Онбординг за 48 часов</span></div>
+          <div class="card pill"><strong>Экономия</strong><span>Оптимизация налогов в рамках закона</span></div>
         </div>
       </div>
     </section>
 
-    <!-- Pricing -->
-    <section class="section alt" id="pricing">
+    <!-- 6. Audience -->
+    <section id="audience" class="section alt">
+      <div class="container cards-3">
+        <div class="card">
+          <h3>Для ИП</h3>
+          <p>Простая система учета, уведомления о сроках, минимальные риски.</p>
+        </div>
+        <div class="card">
+          <h3>Малый бизнес</h3>
+          <p>Оптимизация расходов, автоматизация первички, отчеты без стресса.</p>
+        </div>
+        <div class="card">
+          <h3>Средний и крупный бизнес</h3>
+          <p>МСФО, бюджетирование, интеграции с ERP, аудит.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Pricing -->
+    <section id="pricing" class="section">
       <div class="container">
         <h2>Тарифы</h2>
-        <div class="pricing">
-          <div class="price-card">
+        <div class="cards-3 pricing">
+          <div class="card price">
             <h3>ИП</h3>
-            <div class="price">от 39 000 ₸/мес</div>
-            <ul>
-              <li>Учет + отчетность</li>
-              <li>До 2 сотрудников</li>
-              <li>Чат-поддержка</li>
+            <p class="price-tag">от 45 000 ₸/мес</p>
+            <ul class="list-dots">
+              <li>Отчетность</li><li>Консультации</li><li>Поддержка</li>
             </ul>
-            <a href="#cta" class="btn btn--primary">Оставить заявку</a>
+            <a href="#cta" class="btn btn--secondary">Выбрать</a>
           </div>
-          <div class="price-card price-card--pro">
-            <div class="badge">ТОП-выбор</div>
+          <div class="card price featured">
             <h3>Малый бизнес</h3>
-            <div class="price">от 79 000 ₸/мес</div>
-            <ul>
-              <li>До 15 документов/мес</li>
-              <li>Зарплата и кадры</li>
-              <li>Налоги и отчетность</li>
+            <p class="price-tag">от 75 000 ₸/мес</p>
+            <ul class="list-dots">
+              <li>Полное ведение</li><li>Зарплата</li><li>Кадры</li>
             </ul>
-            <a href="#cta" class="btn btn--secondary">Выбрать тариф</a>
+            <a href="#cta" class="btn btn--primary">Выбрать</a>
           </div>
-          <div class="price-card">
+          <div class="card price">
             <h3>Средний бизнес</h3>
-            <div class="price">от 149 000 ₸/мес</div>
-            <ul>
-              <li>До 50 документов/мес</li>
-              <li>Экспресс-аудит</li>
-              <li>Дашборды</li>
+            <p class="price-tag">индивидуально</p>
+            <ul class="list-dots">
+              <li>МСФО</li><li>ERP‑интеграции</li><li>Аудит</li>
             </ul>
-            <a href="#cta" class="btn btn--primary">Запросить КП</a>
+            <a href="#cta" class="btn btn--secondary">Запросить</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Calculator -->
-    <section class="section" id="calc">
+    <!-- 8. Calculator (simple showcase) -->
+    <section id="calc" class="section alt">
       <div class="container">
         <h2>Подбор тарифа</h2>
-        <form class="calc" onsubmit="return false">
-          <label>Сотрудников
-            <input type="number" id="emp" min="0" max="999" value="3" />
-          </label>
-          <label>Документов в месяц
-            <input type="number" id="docs" min="0" max="999" value="20" />
-          </label>
-          <label>Нужна зарплата и кадры?
-            <select id="hr">
-              <option value="no">Нет</option>
-              <option value="yes" selected>Да</option>
-            </select>
-          </label>
-          <button class="btn btn--primary" id="calcBtn">Рассчитать</button>
-          <output id="calcResult" aria-live="polite">Укажите параметры и нажмите «Рассчитать»</output>
+        <form class="calc-form" onsubmit="return false;">
+          <label>Сотрудников: <input type="number" id="emp" min="0" value="5"></label>
+          <label>Оборот (₸): <input type="number" id="rev" min="0" value="3000000"></label>
+          <button class="btn btn--ghost" id="calcBtn">Рассчитать</button>
+          <div id="calcResult" class="calc-result" aria-live="polite"></div>
         </form>
       </div>
     </section>
 
-    <!-- Reviews -->
-    <section class="section alt" id="reviews">
+    <!-- 9. Testimonials -->
+    <section id="testimonials" class="section">
       <div class="container">
         <h2>Отзывы</h2>
-        <div class="reviews">
-          <figure class="review">
-            <blockquote>«Передали бухгалтерию на аутсорс — стало спокойнее. Отчеты всегда вовремя, подсказали где оптимизировать налоги.»</blockquote>
-            <figcaption>— Алия, ИП «Sweet&Fit»</figcaption>
-          </figure>
-          <figure class="review">
-            <blockquote>«Нравится формат ежемесячных дашбордов. Владелец видит картину без погружения в дебеты/кредиты.»</blockquote>
-            <figcaption>— Тимур, ТОО «TechStep»</figcaption>
-          </figure>
-          <figure class="review">
-            <blockquote>«Быстро подключили и помогли пройти камеральный. Рекомендую.»</blockquote>
-            <figcaption>— Дархан, сервис «LogiX»</figcaption>
-          </figure>
+        <div class="cards-3">
+          <blockquote class="card quote">
+            <p>«Передали учет — забыли о штрафах. Всё в срок и без нервов.»</p>
+            <footer>— ТОО «Вектор»</footer>
+          </blockquote>
+          <blockquote class="card quote">
+            <p>«Поставили зарплатный проект, автоматизировали первичку. Рекомендуем.»</p>
+            <footer>— ИП Мухамеджан</footer>
+          </blockquote>
+          <blockquote class="card quote">
+            <p>«Глубокая экспертиза по налогам. Помогли оптимизировать расходы.»</p>
+            <footer>— ООО «ТехМаркет»</footer>
+          </blockquote>
         </div>
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="section" id="faq">
-      <div class="container">
+    <!-- 10. FAQ -->
+    <section id="faq" class="section alt">
+      <div class="container faq">
         <h2>FAQ</h2>
-        <div class="faq">
-          <details>
-            <summary>Как быстро вы начинаете работу?</summary>
-            <p>Обычно в течение 24 часов после согласования и оплаты.</p>
-          </details>
-          <details>
-            <summary>Можно ли работать полностью онлайн?</summary>
-            <p>Да, документы принимаем электронно, договор — через ЭЦП.</p>
-          </details>
-          <details>
-            <summary>Берете ли на себя камеральный контроль?</summary>
-            <p>Да, сопровождаем проверки и готовим ответы.</p>
-          </details>
-        </div>
+        <details>
+          <summary>Можно ли заключить договор онлайн?</summary>
+          <p>Да, все процессы — дистанционно: договор, доступы, отчётность.</p>
+        </details>
+        <details>
+          <summary>Как быстро вы начинаете работу?</summary>
+          <p>Обычно в течение 48 часов после согласования условий.</p>
+        </details>
+        <details>
+          <summary>Какие гарантии?</summary>
+          <p>Прописываем SLA, страхуем ответственность, ведём чек‑листы.</p>
+        </details>
       </div>
     </section>
 
-    <!-- CTA -->
-    <section class="section accent-bg" id="cta">
-      <div class="container cta">
-        <h2>Начните сегодня — остальное возьмем на себя</h2>
-        <form class="form" id="leadForm">
-          <div class="form__row">
-            <input type="text" name="name" placeholder="Ваше имя" required>
-            <input type="tel" name="phone" placeholder="Телефон" required>
-            <input type="email" name="email" placeholder="E-mail">
-          </div>
-          <textarea name="msg" rows="3" placeholder="Кратко опишите задачу"></textarea>
-          <div class="form__actions">
-            <button class="btn btn--secondary" type="submit">Отправить</button>
-            <span class="form__note">Нажимая «Отправить», вы соглашаетесь с политикой конфиденциальности.</span>
-          </div>
+    <!-- 11. CTA -->
+    <section id="cta" class="section highlight">
+      <div class="container grid-2">
+        <div>
+          <h2>Начнем сегодня?</h2>
+          <p class="lead">Оставьте контакты — предложим решение под ваш бизнес.</p>
+        </div>
+        <form id="leadForm" class="card form">
+          <label>Имя<input type="text" name="name" required></label>
+          <label>Телефон<input type="tel" name="phone" required></label>
+          <label>Email<input type="email" name="email" required></label>
+          <button class="btn btn--primary" type="submit">Отправить</button>
+          <p class="form-note">Нажимая «Отправить», вы соглашаетесь с политикой конфиденциальности.</p>
         </form>
       </div>
     </section>
   </main>
 
-  <!-- Footer will be injected from footer.html -->
-  <div id="footer-placeholder" data-include="footer.html"></div>
+  <!-- Footer include -->
+  <div id="site-footer" data-include="footer.html"></div>
+
+  <script src="script.js"></script>
 </body>
 </html>
