@@ -53,7 +53,7 @@ h3{font-size:22px}
 
 /* Header */
 .site-header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(1.2) blur(8px); background:rgba(11,16,32,.6); border-bottom:1px solid #1a2140}
-.header__inner{display:flex; align-items:center; justify-content:space-between; padding:10px 0}
+.header__inner{display:flex; align-items:center; justify-content:space-between; padding:10px 0; min-height:var(--header-h)}
 .logo{display:inline-flex; align-items:center; gap:8px; color:var(--text); text-decoration:none; font-weight:800; letter-spacing:.3px}
 .logo__mark{background:var(--accent); color:#101523; padding:6px 8px; border-radius:10px}
 .logo__text{opacity:.9}
@@ -67,9 +67,18 @@ h3{font-size:22px}
 
 /* Mobile Menu (Fullscreen) */
 .mobile-menu{
-  position:fixed; inset:0; background:#0b1020;
+  position:fixed; inset:0;
+  background:#0b1020 !important;
+  z-index:9999;
   transform:translateY(-100%); opacity:0; pointer-events:none;
-  transition:.25s ease;
+  transition:transform .25s ease, opacity .25s ease, background .25s ease;
+}
+.mobile-menu.open{transform:translateY(0); opacity:1; pointer-events:auto}
+.mobile-menu::before{
+  content:"";
+  position:absolute; inset:0;
+  background:#0b1020;
+  opacity:1;
 }
 .mobile-menu.open{transform:translateY(0); opacity:1; pointer-events:auto}
 .mobile-menu__inner{position:relative; width:min(720px, 90%); margin:0 auto; height:100%;
@@ -167,3 +176,9 @@ body{padding-top:var(--header-h)}
 .site-header.is-light .nav-desktop a{color:#0b1320; opacity:.9}
 .site-header.is-light .hamburger span{background:#0b1320}
 .site-header.is-light .btn--small.btn--primary{box-shadow:none}
+
+
+/* --- Strong overrides for mobile menu overlay --- */
+.mobile-menu{background:#0d1329 !important; backdrop-filter:none !important; z-index:9999}
+.mobile-menu__inner{max-width:720px}
+.mobile-menu__nav a{color:#fff}
