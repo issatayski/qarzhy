@@ -1,29 +1,25 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Qarzhy</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <!-- Кнопка гамбургера -->
-  <button class="menu-btn">☰</button>
+<!-- Header -->
+<header class="site-header" role="banner">
+  <div class="container header__inner">
+    <a href="#home" class="logo" aria-label="На главную">
+      <span class="logo__mark">∑</span>
+      <span class="logo__text">Buh<span>Pro</span></span>
+    </a>
 
-  <!-- Навигационное меню -->
-  <nav class="nav-menu">
-    <button class="close-btn">&times;</button>
-    <ul>
-      <li><a href="#home">Главная</a></li>
-      <li><a href="#about">О нас</a></li>
-      <li><a href="#services">Услуги</a></li>
-      <li><a href="#contact">Контакты</a></li>
-    </ul>
-  </nav>
-
-  <!-- Фон для затемнения -->
-  <div class="menu-overlay"></div>
-
-  <script src="script.js"></script>
-</body>
-</html>
+    <nav class="nav" aria-label="Главное меню">
+      <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Открыть меню">
+        <span class="burger" aria-hidden="true"></span>
+      </button>
+      <div class="nav__overlay" id="navOverlay" hidden></div>
+      <ul class="nav__menu" id="navMenu" aria-hidden="true">
+        <li><a href="#services">Услуги</a></li>
+        <li><a href="#benefits">Преимущества</a></li>
+        <li><a href="#pricing">Тарифы</a></li>
+        <li><a href="#calc">Калькулятор</a></li>
+        <li><a href="#reviews">Отзывы</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#cta" class="btn btn--primary btn--sm">Заявка</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
