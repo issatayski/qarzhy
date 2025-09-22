@@ -3,283 +3,382 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Бухгалтерские услуги — Без штрафов и головной боли</title>
-  <meta name="description" content="Бухгалтерское сопровождение для ИП и ТОО. Расчет налогов, отчетность, зарплатные проекты. Бесплатная консультация.">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>Бухгалтерские услуги — Ваш надёжный аутсорс</title>
+  <meta name="description" content="Профессиональные бухгалтерские услуги в Казахстане: ведение учета, налоги, зарплата, отчётность, консультации." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="site-header" id="top">
-    <div class="container header-inner">
-      <a class="logo" href="#top" aria-label="На главную">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M4 10h16v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10Z" stroke="currentColor" stroke-width="1.6"/>
-          <path d="M8 10V7a4 4 0 1 1 8 0v3" stroke="currentColor" stroke-width="1.6"/>
-        </svg>
-        <span>Счёт&Учёт</span>
+  <!-- 1. Header -->
+  <header class="header" id="top">
+    <div class="container header__inner">
+      <a href="#top" class="logo" aria-label="На главную">
+        <span class="logo__mark">БУХ</span><span class="logo__text">Профи</span>
       </a>
 
-      <nav class="desktop-nav" aria-label="Основное меню">
-        <a href="#services">Услуги</a>
-        <a href="#benefits">Преимущества</a>
-        <a href="#pricing">Тарифы</a>
-        <a href="#calc">Калькулятор</a>
-        <a href="#reviews">Отзывы</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact" class="btn btn-small">Консультация</a>
+      <nav class="nav" aria-label="Главное меню">
+        <button class="nav__toggle" aria-controls="mobileMenu" aria-expanded="false" id="navToggle" aria-label="Открыть меню">
+          <span class="nav__bar"></span><span class="nav__bar"></span><span class="nav__bar"></span>
+        </button>
+        <ul class="nav__list">
+          <li><a href="#services">Услуги</a></li>
+          <li><a href="#benefits">Преимущества</a></li>
+          <li><a href="#pricing">Тарифы</a></li>
+          <li><a href="#cases">Кейсы</a></li>
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#contact">Контакты</a></li>
+        </ul>
+        <a class="btn btn--primary header__cta" href="#cta">Консультация</a>
+        <div class="lang-switch" role="group" aria-label="Смена языка">
+          <button class="lang-switch__btn is-active" data-lang="ru" aria-pressed="true">RU</button>
+          <button class="lang-switch__btn" data-lang="kz" aria-pressed="false">KZ</button>
+        </div>
       </nav>
-
-      <button class="burger" aria-label="Открыть меню" aria-controls="mobileMenu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
     </div>
 
-    <!-- Mobile full-screen overlay menu -->
-    <div id="mobileMenu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Мобильное меню">
-      <div class="mobile-menu-inner">
-        <button class="menu-close" aria-label="Закрыть меню">&times;</button>
-        <a href="#services" class="mobile-link">Услуги</a>
-        <a href="#benefits" class="mobile-link">Преимущества</a>
-        <a href="#pricing" class="mobile-link">Тарифы</a>
-        <a href="#calc" class="mobile-link">Калькулятор</a>
-        <a href="#reviews" class="mobile-link">Отзывы</a>
-        <a href="#faq" class="mobile-link">FAQ</a>
-        <a href="#contact" class="btn btn-primary mobile-cta">Получить консультацию</a>
+    <!-- Mobile fullscreen overlay menu -->
+    <div class="overlay" id="mobileMenu" aria-hidden="true">
+      <div class="overlay__content">
+        <button class="overlay__close" id="overlayClose" aria-label="Закрыть меню">✕</button>
+        <ul class="overlay__list" role="menu">
+          <li><a href="#services" class="overlay__link">Услуги</a></li>
+          <li><a href="#benefits" class="overlay__link">Преимущества</a></li>
+          <li><a href="#pricing" class="overlay__link">Тарифы</a></li>
+          <li><a href="#cases" class="overlay__link">Кейсы</a></li>
+          <li><a href="#reviews" class="overlay__link">Отзывы</a></li>
+          <li><a href="#about" class="overlay__link">О нас</a></li>
+          <li><a href="#contact" class="overlay__link">Контакты</a></li>
+        </ul>
+        <a href="#cta" class="btn btn--primary overlay__cta">Получить консультацию</a>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- HERO -->
-    <section class="hero section">
-      <div class="container grid-2">
-        <div class="hero-text">
-          <h1>Бухгалтерия без ошибок и штрафов</h1>
-          <p class="lead">Сопровождаем ИП и ТОО: отчётность, налоги, зарплата, ЭСФ и сверки. Работаем прозрачно, берём ответственность за результат.</p>
-          <div class="hero-cta">
-            <a href="#contact" class="btn btn-primary">Бесплатная консультация</a>
-            <a href="#pricing" class="btn btn-ghost">Посмотреть тарифы</a>
+    <!-- 2. Hero -->
+    <section class="section hero" id="hero">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <h1>Бухгалтерские услуги для бизнеса <span class="accent">в Казахстане</span></h1>
+          <p>Полный аутсорс бухгалтерии: отчётность, налоги, зарплата и кадры. Работаем быстро, законно и прозрачно.</p>
+          <div class="hero__actions">
+            <a href="#cta" class="btn btn--primary">Получить консультацию</a>
+            <a href="#services" class="btn btn--ghost">Смотреть услуги</a>
           </div>
-          <ul class="trust-badges">
-            <li><span class="dot"></span> 10+ лет опыта</li>
-            <li><span class="dot"></span> 300+ клиентов</li>
-            <li><span class="dot"></span> KZ налоговое право</li>
+          <ul class="hero__stats" aria-label="Ключевые показатели">
+            <li><strong>10+ лет</strong><span>опыта</span></li>
+            <li><strong>50+</strong><span>компаний на обслуживании</span></li>
+            <li><strong>99%</strong><span>своевременной сдачи отчётности</span></li>
           </ul>
         </div>
-        <div class="hero-art">
-          <div class="card glass">
-            <div class="kpi">
-              <div><strong>0</strong><small>штрафов у клиентов за 2024</small></div>
-              <div><strong>24/7</strong><small>поддержка в мессенджерах</small></div>
-              <div><strong>99.9%</strong><small>сроки сдачи отчётности</small></div>
+        <div class="hero__visual" aria-hidden="true">
+          <div class="hero__card">
+            <div class="hero__badge">Без штрафов</div>
+            <div class="hero__sheet">
+              <div class="row"><span>Налоги</span><b>в срок</b></div>
+              <div class="row"><span>Зарплата</span><b>точно</b></div>
+              <div class="row"><span>Отчёты</span><b>сданы</b></div>
             </div>
-            <div class="sparkles" aria-hidden="true"></div>
           </div>
         </div>
       </div>
-      <div class="gradient-sep" aria-hidden="true"></div>
     </section>
 
-    <!-- ABOUT / BENEFITS -->
-    <section id="benefits" class="section">
+    <!-- 3. Pain points -->
+    <section class="section pains" id="pains">
       <div class="container">
-        <h2 class="section-title">Почему мы</h2>
-        <div class="cards-3">
-          <article class="card">
-            <h3>Экспертиза KZ</h3>
-            <p>Работаем по законодательству РК: НДС, КПН, СО, ЭСФ, СФ, СОНО, eGov, Кабинет НП.</p>
-          </article>
-          <article class="card">
-            <h3>Ответственность</h3>
-            <p>Фиксируем SLA по срокам и качеству. Пропишем ответственность в договоре.</p>
-          </article>
-          <article class="card">
-            <h3>Прозрачность</h3>
-            <p>Отчёт по часам и задачам. Доступ в общий чат и к рабочим документам.</p>
-          </article>
+        <h2>Без бухгалтера — риски и потери</h2>
+        <div class="grid grid-4">
+          <div class="card card--icon">
+            <div class="icon">⚠️</div>
+            <h3>Штрафы</h3>
+            <p>Ошибки в отчётности и задержки приводят к санкциям.</p>
+          </div>
+          <div class="card card--icon">
+            <div class="icon">⏳</div>
+            <h3>Потеря времени</h3>
+            <p>Рутины отвлекают от продаж и развития.</p>
+          </div>
+          <div class="card card--icon">
+            <div class="icon">💸</div>
+            <h3>Лишние расходы</h3>
+            <p>Неоптимальные налоги и процессы обходятся дороже.</p>
+          </div>
+          <div class="card card--icon">
+            <div class="icon">🧩</div>
+            <h3>Нет системы</h3>
+            <p>Кадры, зарплата, налоги — всё разрознено.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- SERVICES -->
-    <section id="services" class="section alt">
+    <!-- 4. Services -->
+    <section class="section services" id="services">
       <div class="container">
-        <h2 class="section-title">Услуги</h2>
-        <div class="cards-4">
-          <article class="card svc">
-            <h3>Бухгалтерское сопровождение</h3>
-            <p>Полный цикл: первичка, учёт, отчётность, сверки, закрывающие, архив.</p>
-          </article>
-          <article class="card svc">
-            <h3>Отчётность и налоги</h3>
-            <p>Составление и сдача деклараций, расчёт налогов, уведомления и платежи.</p>
-          </article>
-          <article class="card svc">
-            <h3>Зарплата и кадры</h3>
-            <p>Расчёт ЗП, отпусков и больничных, кадровые приказы, договоры, ЛНА.</p>
-          </article>
-          <article class="card svc">
-            <h3>Консалтинг и аудит</h3>
-            <p>Разбор кейсов, аудит учёта, настройка процессов и 1С/сервисов.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- PRICING -->
-    <section id="pricing" class="section">
-      <div class="container">
-        <h2 class="section-title">Тарифы</h2>
-        <div class="pricing">
-          <article class="price-card">
-            <h3>ИП</h3>
-            <p class="price"><span>от</span> 45 000 <small>₸/мес</small></p>
+        <h2>Услуги</h2>
+        <div class="grid grid-3">
+          <article class="service">
+            <h3>Ведение бухгалтерии</h3>
+            <p>Комплексное сопровождение: первичка, учет, закрытия, отчёты.</p>
             <ul>
-              <li>Учёт + отчётность</li>
+              <li>Постановка и ведение учета</li>
+              <li>Сверки и учётная политика</li>
+              <li>Работа в 1С / учётных системах</li>
+            </ul>
+          </article>
+          <article class="service">
+            <h3>Налоговый учёт</h3>
+            <p>Оптимизация налогов в рамках законодательства РК.</p>
+            <ul>
+              <li>Расчёт и планирование налогов</li>
+              <li>Подготовка и сдача деклараций</li>
+              <li>Сопровождение проверок</li>
+            </ul>
+          </article>
+          <article class="service">
+            <h3>Кадры и зарплата</h3>
+            <p>Начисления, отчёты, отпускные, кадровые документы.</p>
+            <ul>
+              <li>Расчёт ЗП и удержаний</li>
+              <li>Трудовые договоры, приказы</li>
+              <li>СЗВ, статистика, отчёты</li>
+            </ul>
+          </article>
+          <article class="service">
+            <h3>Отчётность</h3>
+            <p>Сдача бухгалтерской, налоговой и статистической отчётности.</p>
+            <ul>
+              <li>Календарь сдачи</li>
+              <li>ЭДО, ЭЦП</li>
+              <li>Контроль сроков</li>
+            </ul>
+          </article>
+          <article class="service">
+            <h3>Консультации и аудит</h3>
+            <p>Решаем нестандартные вопросы, проводим экспресс-аудит.</p>
+            <ul>
+              <li>Разовые консультации</li>
+              <li>Экспресс-аудит</li>
+              <li>Восстановление учёта</li>
+            </ul>
+          </article>
+          <article class="service">
+            <h3>Запуск бизнеса</h3>
+            <p>Регистрация ИП/ТОО, подбор системы налогообложения.</p>
+            <ul>
+              <li>Выбор режима налогообложения</li>
+              <li>Постановка на учёт</li>
+              <li>Онбординг</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Benefits -->
+    <section class="section benefits" id="benefits">
+      <div class="container">
+        <h2>Почему мы?</h2>
+        <div class="grid grid-4">
+          <div class="card">
+            <h3>Эксперты РК</h3>
+            <p>Работа строго по законодательству Казахстана.</p>
+          </div>
+          <div class="card">
+            <h3>Онлайн‑сервис</h3>
+            <p>Чаты, отчёты в личном кабинете, прозрачность.</p>
+          </div>
+          <div class="card">
+            <h3>Конфиденциально</h3>
+            <p>Защищаем ваши данные и репутацию.</p>
+          </div>
+          <div class="card">
+            <h3>Экономия</h3>
+            <p>Сокращаем расходы до 40% vs штатный бухгалтер.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Pricing -->
+    <section class="section pricing" id="pricing">
+      <div class="container">
+        <h2>Тарифы</h2>
+        <div class="pricing__hint">Цены ориентировочные — финальную стоимость рассчитаем после диагностики.</div>
+        <div class="grid grid-3">
+          <div class="price-card">
+            <div class="price-card__tag">Старт</div>
+            <h3>для ИП</h3>
+            <div class="price-card__price">от 45 000 ₸/мес</div>
+            <ul>
+              <li>Первичка и учёт</li>
+              <li>Налоги и отчёты</li>
               <li>До 2 сотрудников</li>
-              <li>Консультации</li>
             </ul>
-            <a href="#contact" class="btn btn-primary">Выбрать</a>
-          </article>
-          <article class="price-card featured">
-            <div class="ribbon">Популярно</div>
-            <h3>Малый бизнес</h3>
-            <p class="price"><span>от</span> 90 000 <small>₸/мес</small></p>
+            <a href="#cta" class="btn btn--primary">Выбрать</a>
+          </div>
+          <div class="price-card price-card--featured">
+            <div class="price-card__tag">Стандарт</div>
+            <h3>для ТОО</h3>
+            <div class="price-card__price">от 95 000 ₸/мес</div>
             <ul>
-              <li>Учёт + отчётность</li>
-              <li>Зарплата до 10 чел.</li>
-              <li>Сверки и ЭСФ</li>
+              <li>Учёт и налоги</li>
+              <li>Зарплата и кадры</li>
+              <li>До 10 сотрудников</li>
             </ul>
-            <a href="#contact" class="btn btn-primary">Выбрать</a>
-          </article>
-          <article class="price-card">
-            <h3>ТОО / Средний</h3>
-            <p class="price"><span>от</span> 180 000 <small>₸/мес</small></p>
+            <a href="#cta" class="btn btn--primary">Выбрать</a>
+          </div>
+          <div class="price-card">
+            <div class="price-card__tag">Бизнес</div>
+            <h3>растущие компании</h3>
+            <div class="price-card__price">от 190 000 ₸/мес</div>
             <ul>
-              <li>Полный цикл</li>
-              <li>Кадры, ЗП 10–50</li>
-              <li>SLA по срокам</li>
+              <li>Полный аутсорс</li>
+              <li>Отчётность и аудит</li>
+              <li>Индивидуальные регламенты</li>
             </ul>
-            <a href="#contact" class="btn btn-primary">Выбрать</a>
+            <a href="#cta" class="btn btn--primary">Выбрать</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Cases -->
+    <section class="section cases" id="cases">
+      <div class="container">
+        <h2>Кейсы</h2>
+        <div class="grid grid-2">
+          <div class="case">
+            <h3>Сократили налоги на 15%</h3>
+            <p>Для торговой компании скорректировали налоговый режим, внедрили учёт по заявкам — экономия 2,3 млн ₸/год.</p>
+          </div>
+          <div class="case">
+            <h3>Проверка без штрафов</h3>
+            <p>Подготовили документы и сопроводили клиента. Итого — ноль санкций, все сроки соблюдены.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Reviews -->
+    <section class="section reviews" id="reviews" aria-live="polite">
+      <div class="container">
+        <h2>Отзывы клиентов</h2>
+        <div class="reviews__carousel" id="reviewsCarousel">
+          <article class="review is-active">
+            <p>«Передали бухгалтерию на аутсорс — наконец-то прозрачность, дисциплина и никаких штрафов. Рекомендуем!»</p>
+            <div class="review__meta">
+              <strong>Айгуль С.</strong> • Retail LLP
+            </div>
+          </article>
+          <article class="review">
+            <p>«Оперативно наладили зарплатный проект и отчетность. Теперь фокус на продажах, а не на бумагах.»</p>
+            <div class="review__meta">
+              <strong>Ербол К.</strong> • Logistics KZ
+            </div>
+          </article>
+          <article class="review">
+            <p>«Отдельное спасибо за консультации по налогам — помогли избежать дорогостоящих ошибок.»</p>
+            <div class="review__meta">
+              <strong>Гульмира Т.</strong> • IT Startup
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- CALCULATOR -->
-    <section id="calc" class="section alt">
+    <!-- 9. Trust -->
+    <section class="section trust" id="trust">
       <div class="container">
-        <h2 class="section-title">Калькулятор стоимости</h2>
-        <form class="calc-form" aria-label="Калькулятор тарифа">
-          <div class="field">
-            <label for="entity">Тип компании</label>
-            <select id="entity" required>
-              <option value="ip">ИП</option>
-              <option value="too">ТОО</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="employees">Сотрудников</label>
-            <input id="employees" type="number" min="0" max="500" value="3" required>
-          </div>
-          <div class="field">
-            <label class="checkbox">
-              <input id="nds" type="checkbox"> Плательщик НДС
-            </label>
-          </div>
-          <button type="button" id="calcBtn" class="btn btn-primary">Рассчитать</button>
-          <output id="calcResult" aria-live="polite" class="calc-result">Введите данные и нажмите «Рассчитать»</output>
-        </form>
-      </div>
-    </section>
-
-    <!-- REVIEWS -->
-    <section id="reviews" class="section">
-      <div class="container">
-        <h2 class="section-title">Отзывы</h2>
-        <div class="reviews">
-          <article class="review">
-            <p>«Передали бухгалтерию на аутсорс — забыли про штрафы. Всегда вовремя и по делу.»</p>
-            <span>— ТОО «АлмаТех»</span>
-          </article>
-          <article class="review">
-            <p>«Помогли навести порядок в первичке и отчётности, теперь всё прозрачно.»</p>
-            <span>— ИП Касымхан</span>
-          </article>
-          <article class="review">
-            <p>«Оперативная связь в WhatsApp, вопросы решаются в тот же день.»</p>
-            <span>— ТОО «Сервис Плюс»</span>
-          </article>
+        <h2>Сертификаты и доверие</h2>
+        <div class="grid grid-4 logos">
+          <div class="logo-box">Сертификат 1</div>
+          <div class="logo-box">Сертификат 2</div>
+          <div class="logo-box">Клиент A</div>
+          <div class="logo-box">Клиент B</div>
         </div>
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section id="faq" class="section alt">
-      <div class="container">
-        <h2 class="section-title">Частые вопросы</h2>
-        <div class="accordion" id="faqList">
-          <details>
-            <summary>Можно ли заключить договор онлайн?</summary>
-            <p>Да, используем ЭЦП и электронный документооборот, весь процесс занимает 1–2 дня.</p>
-          </details>
-          <details>
-            <summary>Как быстро вы начинаете работу?</summary>
-            <p>В течение 1–3 рабочих дней после онбординга и передачи первичных данных.</p>
-          </details>
-          <details>
-            <summary>Какие гарантии вы даёте?</summary>
-            <p>Прописываем ответственность в договоре и SLA по срокам, страхуем профессиональную ответственность.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT / CTA -->
-    <section id="contact" class="section contact">
-      <div class="container grid-2">
+    <!-- 10. About -->
+    <section class="section about" id="about">
+      <div class="container grid grid-2">
         <div>
-          <h2 class="section-title">Начните уже сегодня</h2>
-          <p>Оставьте контакты — проведём бесплатную консультацию и предложим оптимальный тариф.</p>
-          <ul class="contact-list">
-            <li>📞 +7 (700) 000-00-00</li>
-            <li>✉️ hello@schet-uchet.kz</li>
-            <li>📍 Алматы, Казахстан</li>
+          <h2>О нас</h2>
+          <p>Мы — команда бухгалтеров с опытом более 10 лет. Работаем с ИП и ТОО в разных отраслях, внедряем понятные регламенты и берём ответственность за результат.</p>
+          <ul class="checklist">
+            <li>Прозрачные цены и договор</li>
+            <li>Личный менеджер</li>
+            <li>Работа под ключ</li>
           </ul>
         </div>
-        <form class="contact-form" aria-label="Обратная связь">
-          <div class="field"><label for="name">Имя</label><input id="name" required placeholder="Ваше имя"></div>
-          <div class="field"><label for="phone">Телефон</label><input id="phone" type="tel" required placeholder="+7 (___) ___-__-__"></div>
-          <div class="field"><label for="email">E-mail</label><input id="email" type="email" placeholder="name@mail.kz"></div>
-          <div class="field"><label for="msg">Сообщение</label><textarea id="msg" rows="4" placeholder="Кратко опишите задачу"></textarea></div>
-          <button type="submit" class="btn btn-primary">Отправить</button>
-          <p class="form-note">Нажимая «Отправить», вы соглашаетесь с политикой конфиденциальности.</p>
+        <div class="about__card" aria-hidden="true">
+          <div class="about__tile">1С • ЭДО • ЭЦП</div>
+          <div class="about__tile">Налоги • ЗП • Кадры</div>
+          <div class="about__tile">Отчётность • Аудит</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. CTA -->
+    <section class="section cta" id="cta">
+      <div class="container grid grid-2 cta__inner">
+        <div>
+          <h2>Доверьте бухгалтерию профессионалам</h2>
+          <p>Оставьте заявку — сделаем бесплатную диагностику и рассчитаем стоимость.</p>
+          <ul class="checklist">
+            <li>Без спама</li>
+            <li>Ответ в течение рабочего дня</li>
+            <li>Конфиденциально</li>
+          </ul>
+        </div>
+        <form id="leadForm" class="form" autocomplete="on">
+          <label for="name">Имя</label>
+          <input id="name" name="name" type="text" placeholder="Ваше имя" required />
+          <label for="phone">Телефон</label>
+          <input id="phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" required />
+          <label for="message">Комментарий (необязательно)</label>
+          <textarea id="message" name="message" rows="3" placeholder="Опишите задачу"></textarea>
+          <button type="submit" class="btn btn--primary">Отправить заявку</button>
+          <p class="form__note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.</p>
         </form>
+      </div>
+    </section>
+
+    <!-- 12. Contacts / Footer top -->
+    <section class="section contacts" id="contact">
+      <div class="container grid grid-3">
+        <div>
+          <h3>Контакты</h3>
+          <p><strong>Телефон:</strong> <a href="tel:+77000000000">+7 700 000 00 00</a></p>
+          <p><strong>E-mail:</strong> <a href="mailto:info@example.kz">info@example.kz</a></p>
+          <p><strong>Адрес:</strong> Алматы, пр. Абая, 10</p>
+        </div>
+        <div>
+          <h3>Режим работы</h3>
+          <p>Пн–Пт: 09:00–18:00</p>
+          <p>Сб: 10:00–16:00</p>
+          <p>Вс: выходной</p>
+        </div>
+        <div>
+          <h3>Мы в соцсетях</h3>
+          <ul class="socials">
+            <li><a href="#" aria-label="WhatsApp">WhatsApp</a></li>
+            <li><a href="#" aria-label="Instagram">Instagram</a></li>
+            <li><a href="#" aria-label="Facebook">Facebook</a></li>
+          </ul>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <a class="logo small" href="#top">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M4 10h16v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10Z" stroke="currentColor" stroke-width="1.6"/>
-          <path d="M8 10V7a4 4 0 1 1 8 0v3" stroke="currentColor" stroke-width="1.6"/>
-        </svg>
-        <span>Счёт&Учёт</span>
-      </a>
-      <nav class="footer-nav">
-        <a href="#services">Услуги</a>
-        <a href="#pricing">Тарифы</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Контакты</a>
-      </nav>
-      <p class="copy">© <span id="year"></span> Счёт&Учёт. Все права защищены.</p>
+  <!-- 12. Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year"></span> БУХПрофи. Все права защищены.</p>
+      <a href="#top" class="to-top" aria-label="Наверх">↑ Наверх</a>
     </div>
   </footer>
-
-  <button class="to-top" aria-label="Наверх">↑</button>
 
   <script src="script.js"></script>
 </body>
